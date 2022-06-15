@@ -1,0 +1,20 @@
+public:
+    //Function to return max value that can be put in knapsack of capacity W.
+    int ksack(int wt[], int val[],int W,int n)
+    {
+        if(n<0 or W==0)
+        return 0;
+        
+        if(wt[n]>W)
+        return ksack(wt,val,W,n-1);
+        
+        else
+        return max( ksack(wt,val,W,n-1),val[n]+ksack(wt,val,W-wt[n],n-1) );
+        
+    }
+    
+    
+    int knapSack(int W, int wt[], int val[], int n) 
+    { 
+       return ksack(wt,val,W,n-1);
+    }
